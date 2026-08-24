@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#173d6b" />
+    <meta name="description" content="The official home of Akhawiyat Beit El Chaar — news, events, and activities for Fersen, Tala2e3, and Chabibe." />
+    <title>Akhawiyat Beit El Chaar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand logo-brand" href="#home" aria-label="Akhawiyat Beit El Chaar home">
+        <img src="assets/akhawiyat-logo-transparent.png" alt="Logo des Akhawiyat Beit El Chaar" />
+      </a>
+      <button class="menu-button" aria-label="Open menu" aria-expanded="false">☰</button>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#home">Home</a><a href="#groups">Our groups</a><a href="#news">News</a><a href="#calendar">Calendar</a><a href="#contact">Contact</a>
+        <button class="admin-link" id="open-admin">Manage content</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-shape shape-one"></div><div class="hero-shape shape-two"></div>
+        <div class="hero-content reveal">
+          <p class="eyebrow">Faith · Friendship · Service</p>
+          <h1>Together, we grow.<br /><em>Together, we serve.</em></h1>
+          <p class="hero-copy">Welcome to the Akhawiyat family in Beit El Chaar. Find our latest news, activities, and upcoming gatherings in one place.</p>
+          <div class="hero-actions"><a class="button primary" href="#news">Discover what’s new</a><a class="button ghost" href="#calendar">View calendar</a></div>
+        </div>
+        <div class="hero-card reveal">
+          <span class="card-label" lang="ar" dir="rtl">المناسبة القادمة</span>
+          <div id="next-event"></div>
+        </div>
+        <a class="scroll-cue" href="#groups" aria-label="Scroll to groups">↓</a>
+      </section>
+
+      <section class="section intro" id="groups">
+        <div class="section-heading reveal"><p class="eyebrow">One family, three groups</p><h2>A place for every age</h2><p>Each group has its own spirit and activities, united by the same values and community.</p></div>
+        <div class="group-grid">
+          <article class="group-card fersen reveal"><div class="group-icon">⚔</div><p class="group-number">01</p><h3 lang="ar" dir="rtl">فرسان العذراء</h3><p>Our youngest members discover faith, friendship, and teamwork through joyful activities.</p><button data-filter="Fersen"><span lang="ar" dir="rtl">أخبار فرسان العذراء</span> <span>←</span></button></article>
+          <article class="group-card talae3 reveal"><div class="group-icon">☀</div><p class="group-number">02</p><h3 lang="ar" dir="rtl">طلائع العذراء</h3><p>Growing in confidence and purpose through shared adventures, learning, and service.</p><button data-filter="Tala2e3"><span lang="ar" dir="rtl">أخبار طلائع العذراء</span> <span>←</span></button></article>
+          <article class="group-card chabibe reveal"><div class="group-icon">♜</div><p class="group-number">03</p><h3 lang="ar" dir="rtl">شبيبة العذراء</h3><p>Young people building lasting friendships and making a positive impact together.</p><button data-filter="Chabibe"><span lang="ar" dir="rtl">أخبار شبيبة العذراء</span> <span>←</span></button></article>
+        </div>
+      </section>
+
+      <section class="section news-section" id="news">
+        <div class="section-heading left reveal"><p class="eyebrow">Stay connected</p><h2>Latest news</h2></div>
+        <div class="filter-row" role="group" aria-label="Filter news"><button class="active" data-filter="All">All</button><button data-filter="Fersen" lang="ar">فرسان العذراء</button><button data-filter="Tala2e3" lang="ar">طلائع العذراء</button><button data-filter="Chabibe" lang="ar">شبيبة العذراء</button></div>
+        <div class="news-grid" id="news-grid"></div>
+      </section>
+
+      <section class="festival-section" id="festival">
+        <div class="festival-inner reveal">
+          <div class="festival-copy">
+            <p class="eyebrow light">30 August — 6 September</p>
+            <h2 lang="ar" dir="rtl">ع طريق مار ميخائيل ٤ - عالبلدي</h2>
+            <p>Eight days of celebrations, liturgies, live music, family activities, and entertainment in Beit El Chaar.</p>
+            <div class="festival-location"><span aria-hidden="true">⌖</span><span lang="ar" dir="rtl">كنيسة مار ميخائيل وساحة البلدة</span></div>
+          </div>
+          <div class="schedule-panel" id="schedule-panel" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="reservation-section" id="reservation">
+        <div class="reservation-wrap">
+          <div class="reservation-copy reveal">
+            <p class="eyebrow">Festival reservations</p>
+            <h2>Reserve your place</h2>
+            <p>Complete this form for activities marked <strong>Reservation required</strong>.</p>
+            <div class="reservation-note"><span>i</span><p>After completing the form, WhatsApp will open with your reservation details. Press Send to deliver the request to the festival team.</p></div>
+          </div>
+          <form class="reservation-form reveal" id="reservation-form">
+            <label>Activity<select name="activity" id="reservation-activity" required><option value="">Choose an activity</option><option value="Ghinwa Show — 3 September, 7:30 PM">Ghinwa Show — 3 September, 7:30 PM — $5</option><option value="Zajal evening with فرقة المجد — 4 September, 8:30 PM">Zajal evening with فرقة المجد — 4 September, 8:30 PM — $10</option><option value="Georges Tawil & Fida Khoury — 5 September, 8:30 PM">Georges Tawil & Fida Khoury — 5 September, 8:30 PM — $10</option></select></label>
+            <div class="reservation-poster" id="reservation-poster" hidden></div>
+            <div class="reservation-price" id="reservation-price" aria-live="polite"><span>Ticket price</span><strong>Choose an activity</strong></div>
+            <div class="form-row"><label>Full name<input name="name" required maxlength="80" placeholder="Your full name" /></label><label>Phone number<input name="phone" type="tel" required maxlength="24" placeholder="03 000 000" /></label></div>
+            <label>Number of places<input name="guests" type="number" required min="1" max="20" value="1" /></label>
+            <label>Note <textarea name="note" maxlength="240" placeholder="Optional message"></textarea></label>
+            <button class="button primary whatsapp-submit" type="submit"><span aria-hidden="true">◉</span> Continue on WhatsApp</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="calendar-section" id="calendar">
+        <div class="calendar-inner">
+          <div class="calendar-copy reveal"><p class="eyebrow light">Save the date</p><h2>Upcoming<br />events</h2><p>Don’t miss our gatherings, celebrations, and activities. Everyone is welcome.</p></div>
+          <div class="event-list" id="event-list"></div>
+        </div>
+      </section>
+
+      <section class="section join" id="contact">
+        <div class="contact-intro reveal"><p class="eyebrow">Contact us</p><h2>Come be part of our family.</h2><p>For information about the church or any of our groups, contact the appropriate person below.</p></div>
+        <div class="contact-grid">
+          <article class="contact-card reveal">
+            <span class="contact-icon" aria-hidden="true">⌂</span>
+            <div class="contact-details"><span class="contact-type">Parish office</span><h3 lang="ar" dir="rtl">كنيسة مار ميخائيل</h3><strong class="contact-name">Church contact</strong><span class="phone-pending">Phone number to be added</span></div>
+          </article>
+          <article class="contact-card fersen-contact reveal">
+            <span class="contact-icon" aria-hidden="true">01</span>
+            <div class="contact-details"><span class="contact-type" lang="ar" dir="rtl">فرسان العذراء</span><h3 lang="ar" dir="rtl">رئيسة الأخوية</h3><strong class="contact-name">Responsible name to be added</strong><span class="phone-pending">Phone number to be added</span></div>
+          </article>
+          <article class="contact-card talae3-contact reveal">
+            <span class="contact-icon" aria-hidden="true">02</span>
+            <div class="contact-details"><span class="contact-type" lang="ar" dir="rtl">طلائع العذراء</span><h3 lang="ar" dir="rtl">رئيسة الأخوية</h3><strong class="contact-name">Responsible name to be added</strong><span class="phone-pending">Phone number to be added</span></div>
+          </article>
+          <article class="contact-card chabibe-contact reveal">
+            <span class="contact-icon" aria-hidden="true">03</span>
+            <div class="contact-details"><span class="contact-type" lang="ar" dir="rtl">شبيبة العذراء</span><h3 lang="ar" dir="rtl">رئيس الأخوية</h3><strong class="contact-name">Responsible name to be added</strong><span class="phone-pending">Phone number to be added</span></div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="footer-logo" href="#home" aria-label="Akhawiyat Beit El Chaar home">
+        <img src="assets/akhawiyat-logo-transparent.png" alt="Logo officiel des Akhawiyat Beit El Chaar" />
+      </a>
+      <div class="footer-message">
+        <p lang="ar" dir="rtl">الأخويات مدرسة: لقاء وتنشئة</p>
+        <span>Faith · Friendship · Service</span>
+      </div>
+      <p class="copyright">© <span id="year"></span> Akhawiyat Beit El Chaar<br /><small>كنيسة مار ميخائيل - بيت الشعار</small></p>
+    </footer>
+
+    <dialog id="admin-dialog">
+      <form method="dialog" class="dialog-top"><div><p class="eyebrow">Content manager</p><h2>Add an update</h2></div><button class="close-button" value="cancel" aria-label="Close">×</button></form>
+      <div class="admin-tabs"><button class="active" data-tab="news-form">News</button><button data-tab="event-form">Event</button></div>
+      <form id="news-form" class="content-form active">
+        <label>Title<input name="title" required maxlength="80" placeholder="A title for the update" /></label>
+        <label>Group<select name="group"><option value="Church">كنيسة مار ميخائيل</option><option value="Fersen">فرسان العذراء</option><option value="Tala2e3">طلائع العذراء</option><option value="Chabibe">شبيبة العذراء</option></select></label>
+        <label>Description<textarea name="description" required maxlength="240" placeholder="What happened?"></textarea></label>
+        <label>Date<input name="date" type="date" required /></label>
+        <button class="button primary" type="submit">Publish news</button>
+      </form>
+      <form id="event-form" class="content-form">
+        <label>Event name<input name="title" required maxlength="80" placeholder="Name of the event" /></label>
+        <label>Group<select name="group"><option value="Everyone">Everyone</option><option value="Fersen">فرسان العذراء</option><option value="Tala2e3">طلائع العذراء</option><option value="Chabibe">شبيبة العذراء</option></select></label>
+        <label>Date and time<input name="date" type="datetime-local" required /></label>
+        <label>Location<input name="location" required maxlength="80" value="كنيسة مار ميخائيل - بيت الشعار" dir="rtl" /></label>
+        <button class="button primary" type="submit">Add event</button>
+      </form>
+      <p class="storage-note">Demo mode: updates are saved on this device. Connect a database before publishing so everyone sees the same content.</p>
+    </dialog>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
