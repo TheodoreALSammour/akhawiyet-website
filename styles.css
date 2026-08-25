@@ -169,3 +169,15 @@ section[id]{scroll-margin-top:88px}
 .phone-pending{display:block;color:#8a969e;font-size:11px;padding-top:10px;margin-top:5px;border-top:1px solid #e8ecee;width:100%}
 @media(max-width:1050px){.join>.contact-grid{grid-template-columns:repeat(2,1fr)}.contact-card{min-height:270px}}
 @media(max-width:600px){.join>.contact-grid{grid-template-columns:1fr}.contact-card{min-height:0}.contact-card h3{text-align:center}.contact-intro{text-align:left}}
+
+/* Official logo system */
+.logo-brand{display:flex;align-items:center;gap:10px}
+.site-header .logo-brand .header-akhawiyat-logo{width:185px;height:66px;object-fit:contain;object-position:left center}
+.logo-divider{width:1px;height:39px;background:rgba(21,59,103,.17)}
+.site-header .logo-brand .header-church-logo{width:53px;height:53px;object-fit:contain;filter:drop-shadow(0 3px 7px rgba(85,9,20,.15))}
+.contact-logo{position:relative;z-index:1;display:grid;place-items:center;width:94px;height:94px;margin:0 auto 20px;border-radius:50%;background:#fff;border:1px solid rgba(21,59,103,.09);box-shadow:0 9px 24px rgba(20,45,67,.1)}
+.contact-logo img{display:block;width:82px;height:82px;object-fit:contain}
+.church-contact-logo img{width:88px;height:88px}
+.contact-card{padding-top:27px}
+@media(max-width:850px){.site-header .logo-brand .header-akhawiyat-logo{width:150px;height:54px}.site-header .logo-brand .header-church-logo{width:44px;height:44px}.logo-divider{height:32px}}
+@media(max-width:520px){.site-header .logo-brand{gap:6px}.site-header .logo-brand .header-akhawiyat-logo{width:116px;height:44px}.site-header .logo-brand .header-church-logo{width:37px;height:37px}.logo-divider{height:27px}.contact-logo{width:86px;height:86px}.contact-logo img{width:75px;height:75px}}
