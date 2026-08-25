@@ -19,7 +19,6 @@
       <button class="menu-button" aria-label="Open menu" aria-expanded="false">☰</button>
       <nav class="main-nav" aria-label="Main navigation">
         <a href="#home">Home</a><a href="#groups">Our groups</a><a href="#news">News</a><a href="#calendar">Calendar</a><a href="#contact">Contact</a>
-        <button class="admin-link" id="open-admin">Manage content</button>
       </nav>
     </header>
 
@@ -127,25 +126,6 @@
       <p class="copyright">© <span id="year"></span> Akhawiyat Beit El Chaar<br /><small>كنيسة مار ميخائيل - بيت الشعار</small></p>
     </footer>
 
-    <dialog id="admin-dialog">
-      <form method="dialog" class="dialog-top"><div><p class="eyebrow">Content manager</p><h2>Add an update</h2></div><button class="close-button" value="cancel" aria-label="Close">×</button></form>
-      <div class="admin-tabs"><button class="active" data-tab="news-form">News</button><button data-tab="event-form">Event</button></div>
-      <form id="news-form" class="content-form active">
-        <label>Title<input name="title" required maxlength="80" placeholder="A title for the update" /></label>
-        <label>Group<select name="group"><option value="Church">كنيسة مار ميخائيل</option><option value="Fersen">فرسان العذراء</option><option value="Tala2e3">طلائع العذراء</option><option value="Chabibe">شبيبة العذراء</option></select></label>
-        <label>Description<textarea name="description" required maxlength="240" placeholder="What happened?"></textarea></label>
-        <label>Date<input name="date" type="date" required /></label>
-        <button class="button primary" type="submit">Publish news</button>
-      </form>
-      <form id="event-form" class="content-form">
-        <label>Event name<input name="title" required maxlength="80" placeholder="Name of the event" /></label>
-        <label>Group<select name="group"><option value="Everyone">Everyone</option><option value="Fersen">فرسان العذراء</option><option value="Tala2e3">طلائع العذراء</option><option value="Chabibe">شبيبة العذراء</option></select></label>
-        <label>Date and time<input name="date" type="datetime-local" required /></label>
-        <label>Location<input name="location" required maxlength="80" value="كنيسة مار ميخائيل - بيت الشعار" dir="rtl" /></label>
-        <button class="button primary" type="submit">Add event</button>
-      </form>
-      <p class="storage-note">Demo mode: updates are saved on this device. Connect a database before publishing so everyone sees the same content.</p>
-    </dialog>
     <div id="toast" role="status" aria-live="polite"></div>
     <script src="app.js"></script>
   </body>

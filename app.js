@@ -1,11 +1,3 @@
-const defaults = {
-  news: [],
-  events: []
-};
-
-const load = (key) => JSON.parse(localStorage.getItem(`akhawiyat-${key}`) || "null") || defaults[key];
-// Remove the original demonstration posts while preserving future published news.
-let news = load("news").filter(item => ![1, 2, 3].includes(item.id));
 const festivalNews = { id: "festival-2026", group: "Church", title: "مهرجان عيد مار ميخائيل", description: "من 30 آب حتى 6 أيلول — اضغط هنا لاكتشاف برنامج المهرجان الكامل.", date: "2026-08-30", endDate: "2026-09-06", link: "#festival" };
 const officialNews = [
   festivalNews,
@@ -13,13 +5,8 @@ const officialNews = [
   { id: "talae3-camp-2026", group: "Tala2e3", title: "Mission I'm Possible Summer Camp 2026", description: "Highlights and memories from our summer camp together.", date: "2026-08-05", endDate: "2026-08-08" },
   { id: "chabibe-camp-2026", group: "Chabibe", title: "Mission I'm Possible Summer Camp 2026", description: "Highlights and memories from our summer camp together.", date: "2026-08-05", endDate: "2026-08-08" }
 ];
-officialNews.forEach(post => {
-  const index = news.findIndex(item => item.id === post.id);
-  if (index >= 0) news[index] = post;
-  else news.push(post);
-});
-// Remove the old demonstration events while keeping events added by an administrator.
-let events = load("events").filter(event => ![1, 2, 3].includes(event.id));
+const news = [...officialNews];
+const events = [];
 let activeFilter = "All";
 const groupColors = { Fersen: "#2788c9", Tala2e3: "#d9232e", Chabibe: "#1768aa", Church: "#9f2630" };
 const groupNames = { Fersen: "فرسان العذراء", Tala2e3: "طلائع العذراء", Chabibe: "شبيبة العذراء", Church: "كنيسة مار ميخائيل", Everyone: "الجميع" };
@@ -81,7 +68,6 @@ function renderEvents() {
 }
 
 function escapeHTML(text) { const div = document.createElement("div"); div.textContent = text; return div.innerHTML; }
-function save(type, data) { localStorage.setItem(`akhawiyat-${type}`, JSON.stringify(data)); }
 function toast(message) { const el = document.querySelector("#toast"); el.textContent = message; el.classList.add("show"); setTimeout(() => el.classList.remove("show"), 2600); }
 
 document.querySelectorAll("[data-filter]").forEach(button => button.addEventListener("click", () => {
@@ -91,11 +77,6 @@ document.querySelectorAll("[data-filter]").forEach(button => button.addEventList
 }));
 document.querySelector(".menu-button").addEventListener("click", e => { const nav=document.querySelector(".main-nav"); nav.classList.toggle("open"); e.currentTarget.setAttribute("aria-expanded",nav.classList.contains("open")); });
 document.querySelectorAll(".main-nav a").forEach(a => a.addEventListener("click",()=>document.querySelector(".main-nav").classList.remove("open")));
-const dialog = document.querySelector("#admin-dialog");
-document.querySelector("#open-admin").addEventListener("click", () => { dialog.showModal(); document.querySelector(".main-nav").classList.remove("open"); });
-document.querySelectorAll(".admin-tabs button").forEach(btn => btn.addEventListener("click", () => { document.querySelectorAll(".admin-tabs button").forEach(b=>b.classList.remove("active")); document.querySelectorAll(".content-form").forEach(f=>f.classList.remove("active")); btn.classList.add("active"); document.querySelector(`#${btn.dataset.tab}`).classList.add("active"); }));
-document.querySelector("#news-form").addEventListener("submit", e => { e.preventDefault(); const data=Object.fromEntries(new FormData(e.currentTarget)); news.push({...data,id:Date.now()}); save("news",news); renderNews(); e.currentTarget.reset(); dialog.close(); toast("News published on this device"); });
-document.querySelector("#event-form").addEventListener("submit", e => { e.preventDefault(); const data=Object.fromEntries(new FormData(e.currentTarget)); events.push({...data,id:Date.now()}); save("events",events); renderEvents(); e.currentTarget.reset(); dialog.close(); toast("Event added to the calendar"); });
 document.querySelector("#year").textContent = new Date().getFullYear();
 const schedulePanel = document.querySelector("#schedule-panel");
 const festivalDays = [
